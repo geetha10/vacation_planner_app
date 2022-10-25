@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacation Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="container">
+        <div id="top_nav" class="row text-center align-content-between flex-wrap align-items-baseline bg-info text-dark" >
+            <div class="logo col">
+                <!-- <img class="leaf_logo" src="images/leaf.png" alt="leaf logo"> -->
+                <h1>Vacation Planner</h1>
+            </div>
+            <p class="col">
+                <a href="/logout" class="btn btn-info btn-outline-dark btn-sm">Logout</a>
+            </p>
+        </div>
+        <h1 class="text-center">These are the generated plans: Please pick one</h1>
+        {% for i in range(plans|length) %}
+            <div class="m-5 border">
+                <div class="ml-5 mr-5 mt-3">
+                    <h4 >Plan {{i+1}}</h4>
+                    <table class="table table-bordered table-hover text-center">
+                        <thead>
+                            <th scope="col" >Place Name</th>
+                            <th scope="col">Start Time</th>
+                            <th scope="col" >End Time</th>
+                        </thead>
+                        {% for place in plans[i]%}
+                        <tbody>
+                            <td>{{place['place_name']}}</td>
+                            <td>{{place['start_time']}}</td>
+                            <td>{{place['end_time']}}</td>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                    <!-- {% for place in plans[i]%}
+                    <p>{{place['place_name']}} </p>
+                    {% endfor %} -->
+                </div>
+                <p class="ml-5 text-center"><a href="/save_plan/{{i}}" class="btn btn-info btn-outline-dark">Select This Plan</a></p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

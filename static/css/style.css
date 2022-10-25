@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#container{
+    width: auto;
+    margin: 0 auto;
+    height: 800px;
+    background-image: url('/static/images/vacation_mode.jpg');
+    background-size: auto 1200px;
+}
+#description {
+    color: white;
+}
+
+/* .search_bar{
+    background-color:gainsboro;
+    width: auto;
+    flex:1;
+    margin: 0 25px;
+    background: gainsboro no-repeat right;
+    background-image: url(images/search-dark.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-origin: content-box;
+    background-size: 2rem 2rem;
+} */

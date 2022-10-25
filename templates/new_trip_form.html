@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacation Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="container">
+        <div id="top_nav" class="row text-center align-content-between flex-wrap align-items-baseline bg-info text-dark" >
+            <div class="logo col">
+                <!-- <img class="leaf_logo" src="images/leaf.png" alt="leaf logo"> -->
+                <h1>Vacation Planner</h1>
+            </div>
+            <p class="col">
+                <a href="/logout" class="btn btn-info btn-outline-dark btn-sm">Logout</a>
+            </p>
+        </div>
+        <div id="trip_info_form" class="d-flex justify-content-center">
+            <form action="/plan_trip" method="post" >
+                <h2 class="text-primary">Plan your next vacation</h2>
+                <div class="form-group">
+                    <label for="city">Which City</label>
+                    <input type="text" name="city" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" name="state" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="staying_at">Staying At:</label>
+                    <input type="text" name="staying_at" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="start_date">Start Date:</label>
+                    <input type="date" name="start_date" class="form-control">
+                    <label for="end_date">End Date:</label>
+                    <input type="date" name="end_date" class="form-control">
+                </div>
+                <p>Places of interest:</p>
+                <div class="form-group">
+                    <label for="places_of_interest1">Option 1:</label>
+                    <select  name="places_of_interest1" class="form-control">
+                        <option value="museum">Museum</option>
+                        <option value="parks">Parks</option>
+                        <option value="library">Library</option>
+                        
+                    </select>
+                    <label for="places_of_interest2">Option 2:</label>
+                    <select  name="places_of_interest2" class="form-control">
+                        <option value="museum">Museum</option>
+                        <option value="parks">Parks</option>
+                        <option value="library">Library</option>
+                    </select>
+                </div>
+                <!-- <p>Do you want to block your calendar:</p>
+                <div class="form-group">
+                    <label for="date_blocked">Date:</label>
+                    <input type="date" name="date_blocked" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="start_time_blocked">Start Time:</label>
+                    <input type="time"  value="00:00" step="900" name="start_time_blocked" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="end_time_blocked">End Time:</label>
+                    <input type="time" value="00:00" step="900" name="end_time_blocked" class="form-control">
+                </div> -->
+                <p class='text-center'>
+                    <input type="submit" value="Generate A Plan" class="btn btn-primary">
+                </p>
+                
+                {% with messages = get_flashed_messages(category_filter=['new_trip']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>

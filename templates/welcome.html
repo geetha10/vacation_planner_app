@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacation Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="container" class="d-flex justify-content-around">
+        <div id="description" class="col-4 p-4" >
+            <h1>Vacation planner</h1>
+            <!-- <img src="{{url_for('static', filename='images/vacation_mode.jpg')}}" alt="vacation_mode" width="500" height="300"/> -->
+            <p>Plan your vacation here.</p>
+            <p>Plan one day at a time.</p>
+        </div>
+        <div id="loginform" class="col-4 p-4">
+            <form action="/login_validation" method="post" >
+                <h2 class="text-success">Login</h2>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="text" name="password" class="form-control">
+                </div>
+                <input type="submit" value="Login" class="btn btn-success">
+                <a href="/register_user" class="btn btn-success">Register</a>
+                {% with messages = get_flashed_messages(category_filter=['login']) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
